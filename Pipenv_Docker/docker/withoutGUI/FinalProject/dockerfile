@@ -1,0 +1,18 @@
+FROM python:3.11-slim
+
+# Встановимо змінну середовища
+ENV APP_HOME /app
+
+# Встановимо робочу директорію всередині контейнера
+WORKDIR $APP_HOME
+
+# Встановлюємо залежності в середовищі pipenv
+COPY Pipfile .
+RUN python -m pip install --upgrade pip
+
+# Копіюємо весь вміст нашого проекту у контейнер
+COPY . .
+
+# Команда, яка буде виконуватися при запуску контейнера
+#ENTRYPOINT ["python", "main.py"]
+CMD ["python", "__main__.py"]
