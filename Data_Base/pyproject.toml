@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "data base"
+version = "0.1.0"
+description = "data base"
+authors = ["Olga Tsuban <tsubanolga@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+psycopg2-binary = "^2.9.9"
+faker = "^20.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
