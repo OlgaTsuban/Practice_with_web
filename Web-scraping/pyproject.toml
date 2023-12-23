@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "web-scraping"
+version = "0.1.0"
+description = "web-scraping"
+authors = ["Olga Tsuban <tsubanolga@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+scrapy = "^2.11.0"
+mongo = "^0.2.0"
+mongoengine = "^0.27.0"
+redis = "^5.0.1"
+redis-lru = "^0.1.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
