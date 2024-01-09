@@ -1,0 +1,51 @@
+<!-- authors_app/templates/authors_app/all_authors.html -->
+{% extends 'authors_app/base.html' %}
+
+
+{% block title %}All Authors{% endblock %}
+
+{% block content %}
+{% load static %}
+  <link rel="stylesheet" href="{% static 'authors_app/all_authors.css' %}">
+  
+  <div class="container mt-3">
+    <h2>All Authors</h2>
+    {% if page_obj %}
+    <div class="pagination">
+      <span class="step-links">
+          {% if page_obj.has_previous %}
+              <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary">Previous</a>
+          {% endif %}
+  
+          <span class="current" style="color: navy;">
+              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+          </span>
+  
+          {% if page_obj.has_next %}
+              <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary">Next</a>
+          {% endif %}
+      </span>
+  </div>
+      {% for author in page_obj %}
+        <div class="quote-box">
+          <p class="fullname"><strong>{{ author.fullname }}</strong></p>
+          <p class="born-date">
+            <span class="born-date-label">Born date:</span>
+            {{ author.born_date }}
+          </p>
+          <p class="born-location">
+            <span class="born-location-label">Born location:</span>
+            {{ author.born_location }}
+          </p>
+          <p class="description">
+            <span class="description-label">Description:</span>
+            {{ author.description }}
+        </p>
+        </div>
+      {% endfor %}
+
+    {% else %}
+      <p>No quotes available.</p>
+    {% endif %}
+  </div>
+{% endblock %}

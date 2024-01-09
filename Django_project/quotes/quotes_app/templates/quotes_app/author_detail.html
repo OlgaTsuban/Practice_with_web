@@ -1,0 +1,12 @@
+<!-- quotes_app/templates/quotes_app/author_detail.html -->
+
+{% extends 'authors_app/base.html' %}
+
+{% block title %}Author Detail - {{ author.fullname }}{% endblock %}
+
+{% block content %}
+    <h1>{{ author.fullname }}</h1>
+    <p><strong>Birthdate:</strong> {{ author.born_date }}</p>
+    <p><strong>Born Place:</strong> {{ author.born_location }}</p>
+    <p><strong>Description:</strong> {{ author.description }}</p>
+{% endblock %}

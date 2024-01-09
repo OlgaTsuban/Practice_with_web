@@ -1,0 +1,26 @@
+<!-- quotes_app/templates/quotes_app/add_tag.html -->
+
+{% extends 'authors_app/base.html' %}
+
+{% block title %}Add Tag{% endblock %}
+
+{% block content %}
+  <div class="container mt-3">
+    {% if form.errors and form.non_field_errors %}
+      <div class="alert alert-danger" role="alert">
+        {{form.non_field_errors}}
+      </div>
+    {% endif %}
+    <form action="{% url 'quotes_app:add_tags' %}" method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="id_name" class="form-label">Name</label>
+        {{ form.name }}
+        <div class="form-text">Enter the name for the tag</div>
+        <span>{{ form.errors.name }}</span>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="reset" class="btn btn-secondary">Reset</button>
+    </form>
+  </div>
+{% endblock %}

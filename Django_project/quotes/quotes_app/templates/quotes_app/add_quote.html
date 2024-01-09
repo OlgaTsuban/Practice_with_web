@@ -1,0 +1,37 @@
+<!-- quotes_app/templates/quotes_app/add_quote.html -->
+
+{% extends 'quotes_app/base.html' %}
+
+{% block title %}Add Quote{% endblock %}
+
+{% block content %}
+  <div class="container mt-3">
+    {% if form.errors and form.non_field_errors %}
+      <div class="alert alert-danger" role="alert">
+        {{form.non_field_errors}}
+      </div>
+    {% endif %}
+    <form action="{% url 'quotes_app:add_quotes' %}" method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="id_author" class="form-label">Author</label>
+        {{ form.author }}
+        <div class="form-text">Select the author for the quote</div>
+        <span>{{ form.errors.author }}</span>
+      </div>
+      <div class="mb-3">
+        <label for="id_tags" class="form-label">Tags</label>
+        {{ form.tags }}
+        <div class="form-text">Select tags for the quote</div>
+        <span>{{ form.errors.tags }}</span>
+      </div>
+      <div class="mb-3">
+        <label for="id_quote" class="form-label">Quote</label>
+        {{ form.quote }}
+        <span>{{ form.errors.quote }}</span>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="reset" class="btn btn-secondary">Reset</button>
+    </form>
+  </div>
+{% endblock %}

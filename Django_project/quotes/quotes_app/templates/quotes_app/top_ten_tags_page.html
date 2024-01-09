@@ -1,0 +1,22 @@
+{% extends 'quotes_app/base.html' %}
+
+{% block title %}Top 10 Tags{% endblock %}
+
+{% block content %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'quotes_app/top_ten_tags.css' %}">
+    
+    <h1>Top 10 Tags</h1>
+
+    <div class="top-ten-tags">
+        <ul>
+            {% for tag in tags %}
+                <li>
+                    <a href="{% url 'quotes_app:tag_quotes' tag.name %}">
+                        {{ tag.name }} ({{ tag.usage_count }})
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

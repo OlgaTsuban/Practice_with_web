@@ -1,0 +1,29 @@
+/* quotes.css */
+.quote-box {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+  }
+  
+  .author {
+    font-weight: bold;
+  }
+
+  .description-label {
+    /* Styles for the label "Description:" */
+    font-style: italic;
+    color: rgb(16, 123, 41); /* Adjust the color as needed */
+  }
+
+  .born-location-label {
+    /* Styles for the label "Born location:" */
+    font-style: italic;
+    color: rgb(29, 29, 153); /* Adjust the color as needed */
+  }
+
+  .born-date-label {
+    /* Styles for the label "Born location:" */
+    font-style: italic;
+    color: rgb(91, 29, 153); /* Adjust the color as needed */
+  }  
