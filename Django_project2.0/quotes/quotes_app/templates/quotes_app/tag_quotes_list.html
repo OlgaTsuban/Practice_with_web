@@ -1,0 +1,30 @@
+<!-- tag_quotes_list.html -->
+
+{% extends 'authors_app/base.html' %}
+
+{% block title %}Tag Quotes{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'quotes_app/all_quotes.css' %}">
+
+  <div class="container mt-3">
+    <h2>Tag Quotes</h2>
+    {% if tag_quotes %}
+      {% for quote in tag_quotes %}
+        <div class="quote-box">
+          <p class="author">{{ quote.author }}</p>
+          <p>{{ quote.quote }}</p>
+          <p class="tags">
+            <span style="color: green;">Tags:</span> 
+            {% for tag in quote.tags.all %}
+              {{ tag.name }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+          </p>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No quotes available for this tag.</p>
+    {% endif %}
+  </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+<!-- templates/scrape_data_page.html -->
+
+<!-- scrape_data_page.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scrape Data</title>
+</head>
+<body>
+    <h2>Scrape Data</h2>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+

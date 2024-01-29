@@ -1,0 +1,48 @@
+{% extends 'authors_app/base.html' %}
+
+{% block title %}All Quotes{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'quotes_app/all_quotes.css' %}">
+
+<div class="container mt-3">
+    <h2>All Quotes</h2>
+    {% if page_obj %}
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary">Previous</a>
+            {% endif %}
+
+            <span class="current" style="color: navy;">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary">Next</a>
+            {% endif %}
+        </span>
+    </div>
+    {% for quote in page_obj %}
+    <div class="quote-box">
+      <p class="author">
+        <a href="{% url 'quotes_app:author_detail' quote.author.id %}">
+            {{ quote.author.fullname }}
+        </a>
+      </p>
+        <p>{{ quote.quote }}</p>
+        <p class="tags">
+            <span style="color: green;">Tags:</span>
+            {% for tag in quote.tags.all %}
+                <a href="{% url 'quotes_app:tag_quotes' tag.name %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+    </div>
+    {% endfor %}
+
+    {% else %}
+    <p>No quotes available.</p>
+    {% endif %}
+</div>
+{% endblock %}

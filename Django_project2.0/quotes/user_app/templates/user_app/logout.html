@@ -1,0 +1,17 @@
+{% extends 'authors_app/base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h1 class="mb-0">Logout</h1>
+            </div>
+            <div class="card-body">
+                <form method="post" action="{% url 'user_app:signin' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-warning">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
